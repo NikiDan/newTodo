@@ -1,0 +1,10 @@
+.addTodo{
+    display: flex;
+}
+
+.inpTodo{
+    margin: 0 10px 0 25px;
+}
+.btnAdd{
+    margin-right: 25px;
+}
