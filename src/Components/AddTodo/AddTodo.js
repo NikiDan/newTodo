@@ -10,12 +10,12 @@ function AddTodo({todo, setTodo}) {
     const[value, setValue] = useState('')
 
     const [localValue, setLocalValue] = useState(
-        JSON.parse(localStorage.getItem('items')) || []
+        JSON.parse(localStorage.getItem('items')) || ['']
     )
 
     useEffect(()=>{
-        localStorage.setItem('items', JSON.stringify(todo))
-    }, [localValue])
+        localStorage.setItem('items', JSON.stringify(localValue))
+    })
 
     function saveTodo(){
         if (value.trim() !== ''){
@@ -26,7 +26,7 @@ function AddTodo({todo, setTodo}) {
                 status: true
             }]
         )
-            setLocalValue((localValue) => [...localValue, setTodo])
+             setLocalValue((localValue) => [...todo, setTodo])
             setValue('')
         }
     }
