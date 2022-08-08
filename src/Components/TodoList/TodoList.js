@@ -72,8 +72,8 @@ function TodoList({todo, setTodo}) {
                     <div className="todoContainer" key={item.id}>
                         {
                             edit === item.id ?
-                                <div>
-                                    <Input onChange={(e)=>setValue(e.target.value)} value={value}/>
+                                <div className="inputContainer">
+                                    <Input className="editInput" onChange={(e)=>setValue(e.target.value)} value={value}/>
                                 </div> :
                                 <div className={!item.status ? "todoListDisable" : "todoListContent"}>{item.title}</div>
                         }

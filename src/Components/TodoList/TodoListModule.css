@@ -37,3 +37,13 @@
     display: flex;
     margin-left: 10px;
 }
+.inputContainer{
+    width: 100%;
+    margin-right: 5px;
+    display: flex;
+    height: 40px;
+    align-items: center;
+}
+.ant-btn{
+    transition: none;
+}
