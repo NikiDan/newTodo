@@ -82,7 +82,7 @@ function TodoList({todo, setTodo}) {
                                 <div>
                                     <Button onClick={()=>saveTodo(item.id)}><CheckOutlined/></Button>
                                 </div> :
-                                <div>
+                                <div className="btnCore">
                                     <Button size="large" onClick={()=>statusTodo(item.id)}>{
                                         item.status ? <CheckCircleOutlined/> : <CloseCircleOutlined />
                                     }</Button>
