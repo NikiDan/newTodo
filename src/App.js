@@ -3,20 +3,23 @@ import './App.css';
 import TodoList  from "./Components/TodoList/TodoList";
 import Header from "./Components/Header/Header"
 import AddTodo from "./Components/AddTodo/AddTodo"
-import { nanoid } from 'nanoid'
 
 function App() {
 
-  const[todo, setTodo] = useState([{
-      id: nanoid(),
-      title: 'Example',
-      status: true
-  }])
+  const[todo, setTodo] = useState([])
+
+    const [localValue, setLocalValue] = useState(
+        JSON.parse(localStorage.getItem('items')) || []
+    )
+
+    useEffect(()=>{
+        localStorage.setItem('items', JSON.stringify(localValue))
+    }, [localValue])
 
   return (
     <div className="App">
         <Header />
-        <AddTodo todo = {todo} setTodo = {setTodo} />
+        <AddTodo todo = {todo} setTodo = {setTodo} localValue = {localValue} setLocalValue = {setLocalValue} />
         <TodoList todo = {todo} setTodo = {setTodo}/>
     </div>
   );

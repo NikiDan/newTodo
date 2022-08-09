@@ -60,7 +60,7 @@ function TodoList({todo, setTodo}) {
         }
     }
 
-    return (
+    return(
         <div className="todoList">
             <div className="btnGroupContainer">
                 <Button onClick={ ()=>todoFilter('all') }>All</Button>

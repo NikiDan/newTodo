@@ -1,32 +1,23 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import { Input } from 'antd';
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { nanoid } from 'nanoid';
 import "./AddListModule.css"
 
-function AddTodo({todo, setTodo}) {
+function AddTodo({todo, setTodo, setLocalValue}) {
 
     const[value, setValue] = useState('')
 
-    const [localValue, setLocalValue] = useState(
-        JSON.parse(localStorage.getItem('items')) || ['']
-    )
-
-    useEffect(()=>{
-        localStorage.setItem('items', JSON.stringify(localValue))
-    })
-
     function saveTodo(){
         if (value.trim() !== ''){
-        setTodo(
-            [...todo,{
-                id: nanoid(),
-                title: value,
-                status: true
-            }]
-        )
-             setLocalValue((localValue) => [...todo, setTodo])
+            const newItem =[...todo, {
+               id: nanoid(),
+               title: value,
+               status: true
+           }]
+            setLocalValue((localValue) => [...localValue, newItem])
+            setTodo(newItem)
             setValue('')
         }
     }
