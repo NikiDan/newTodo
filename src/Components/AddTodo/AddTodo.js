@@ -16,7 +16,11 @@ function AddTodo({todo, setTodo, setLocalValue}) {
                title: value,
                status: true
            }]
-            setLocalValue((localValue) => [...localValue, newItem])
+            setLocalValue((localValue) => [...localValue, {
+                id: nanoid(),
+                title: value,
+                status: true
+            }])
             setTodo(newItem)
             setValue('')
         }
