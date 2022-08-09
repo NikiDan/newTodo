@@ -6,7 +6,7 @@ import AddTodo from "./Components/AddTodo/AddTodo"
 
 function App() {
 
-    const[todo, setTodo] = useState(JSON.parse(localStorage.getItem('items')))
+    const[todo, setTodo] = useState(JSON.parse(localStorage.getItem('items')) || [])
 
     const [localValue, setLocalValue] = useState(
         JSON.parse(localStorage.getItem('items')) || []
