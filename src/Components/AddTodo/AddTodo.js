@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { nanoid } from 'nanoid';
-import "./AddListModule.css"
+import "./AddListModule.css";
 
 function AddTodo({todo, setTodo, setLocalValue}) {
 

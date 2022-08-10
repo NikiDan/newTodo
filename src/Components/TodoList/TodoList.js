@@ -7,7 +7,8 @@ import { DeleteOutlined,
     CheckCircleOutlined,
     CloseCircleOutlined} from '@ant-design/icons';
 import { Input } from 'antd';
-import "./TodoListModule.css"
+import "./TodoListModule.css";
+import 'animate.css';
 
 function TodoList({todo, setTodo}) {
 
@@ -77,7 +78,7 @@ function TodoList({todo, setTodo}) {
             </div>
             {
                 filtered.map(item => (
-                    <div className="todoContainer" key={item.id}>
+                    <div id="todoContainer" className="todoContainer animate__animated animate__zoomIn" key={item.id}>
                         {
                             edit === item.id ?
                                 <div className="inputContainer">
@@ -86,7 +87,7 @@ function TodoList({todo, setTodo}) {
                                            value={value}
                                            onKeyPress={(e) => onKeyPress(e, item.id)}/>
                                 </div> :
-                                <div className={!item.status ? "todoListDisable" : "todoListContent"}>{item.title}</div>
+                                <div className={!item.status ? "todoListDisable animate__animated animate__flipInX" : "todoListContent"}>{item.title}</div>
                         }
                         {
                             edit === item.id ?
