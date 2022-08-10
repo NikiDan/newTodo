@@ -20,7 +20,7 @@ function App() {
     <div className="App">
         <Header />
         <AddTodo todo = {todo} setTodo = {setTodo} localValue = {localValue} setLocalValue = {setLocalValue} />
-        <TodoList todo = {todo} setTodo = {setTodo}/>
+        <TodoList todo = {todo} setTodo = {setTodo} localValue = {localValue} setLocalValue = {setLocalValue}/>
     </div>
   );
 }

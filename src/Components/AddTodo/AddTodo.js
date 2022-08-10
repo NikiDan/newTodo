@@ -11,7 +11,7 @@ function AddTodo({todo, setTodo, setLocalValue}) {
 
     function saveTodo(){
         if (value.trim() !== ''){
-            const newItem =[...todo, {
+            let newItem =[...todo, {
                id: nanoid(),
                title: value,
                status: true

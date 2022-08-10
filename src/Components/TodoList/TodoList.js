@@ -22,6 +22,7 @@ function TodoList({todo, setTodo}) {
     function deleteTodo(id){
         let newTodo = [...todo].filter(item => item.id !== id)
         setTodo(newTodo)
+        localStorage.setItem('items', JSON.stringify(newTodo))
     }
 
     function statusTodo(id){
@@ -31,8 +32,8 @@ function TodoList({todo, setTodo}) {
             }
             return item
         })
+        localStorage.setItem('items', JSON.stringify(newTodo))
         setTodo(newTodo)
-        console.log(todo)
     }
 
     function editTodo(id, title){
@@ -47,6 +48,7 @@ function TodoList({todo, setTodo}) {
             }
             return item
         })
+        localStorage.setItem('items', JSON.stringify(newTodo))
         setTodo(newTodo)
         setEdit(null)
     }
