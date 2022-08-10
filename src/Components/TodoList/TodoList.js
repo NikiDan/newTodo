@@ -53,6 +53,12 @@ function TodoList({todo, setTodo}) {
         setEdit(null)
     }
 
+    let onKeyPress = (e, id) =>{
+        if(e.key === 'Enter'){
+            saveTodo(id)
+        }
+    }
+
     function todoFilter(status){
         if(status === 'all'){
             setFiltered(todo)
@@ -75,7 +81,10 @@ function TodoList({todo, setTodo}) {
                         {
                             edit === item.id ?
                                 <div className="inputContainer">
-                                    <Input className="editInput" onChange={(e)=>setValue(e.target.value)} value={value}/>
+                                    <Input className="editInput"
+                                           onChange={(e)=>setValue(e.target.value)}
+                                           value={value}
+                                           onKeyPress={(e) => onKeyPress(e, item.id)}/>
                                 </div> :
                                 <div className={!item.status ? "todoListDisable" : "todoListContent"}>{item.title}</div>
                         }

@@ -26,11 +26,18 @@ function AddTodo({todo, setTodo, setLocalValue}) {
         }
     }
 
+    function onKeyPress(e) {
+        if (e.key === 'Enter') {
+            saveTodo()
+        }
+    }
+
     return (
         <div className="addTodo">
             <Input placeholder="Enter something"
                    className="inpTodo"
                    value={value}
+                   onKeyPress={onKeyPress}
                    onChange={(e)=>setValue(e.target.value)}/>
             <Button className="btnAdd" onClick={saveTodo}><PlusOutlined /></Button>
         </div>
