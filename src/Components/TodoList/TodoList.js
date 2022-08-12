@@ -26,7 +26,19 @@ function TodoList({todo, setTodo}) {
         localStorage.setItem('items', JSON.stringify(newTodo))
     }
 
+    function animationDelete(id){
+        const todoContainer = document.getElementById(id)
+
+        todoContainer.classList.remove('animate__zoomIn')
+        todoContainer.classList.add('animate__fadeOutRightBig')
+
+        todoContainer.addEventListener("animationend", () => {
+            deleteTodo(id)
+        })
+    }
+
     function statusTodo(id){
+
         let newTodo = [...todo].filter(item => {
             if(item.id === id){
                 item.status = !item.status
@@ -78,7 +90,7 @@ function TodoList({todo, setTodo}) {
             </div>
             {
                 filtered.map(item => (
-                    <div id="todoContainer" className="todoContainer animate__animated animate__zoomIn" key={item.id}>
+                    <div id={item.id} className="todoContainer animate__animated animate__zoomIn" key={item.id}>
                         {
                             edit === item.id ?
                                 <div className="inputContainer">
@@ -87,7 +99,7 @@ function TodoList({todo, setTodo}) {
                                            value={value}
                                            onKeyPress={(e) => onKeyPress(e, item.id)}/>
                                 </div> :
-                                <div className={!item.status ? "todoListDisable animate__animated animate__flipInX" : "todoListContent"}>{item.title}</div>
+                                    <div id="todoListContent" className={!item.status ? "todoListDisable animate__animated animate__flipInX" : "todoListContent animate__animated animate__bounceIn"}>{item.title}</div>
                         }
                         {
                             edit === item.id ?
@@ -99,7 +111,7 @@ function TodoList({todo, setTodo}) {
                                         item.status ? <CheckCircleOutlined/> : <CloseCircleOutlined />
                                     }</Button>
                                     <Button size="large" className="btnGroup" onClick={()=>editTodo(item.id, item.title)}><EditOutlined /></Button>
-                                    <Button size="large" className="btnGroup" danger onClick={()=>deleteTodo(item.id)}><DeleteOutlined /></Button>
+                                    <Button size="large" className="btnGroup" danger onClick={()=>animationDelete(item.id)}><DeleteOutlined /></Button>
                                 </div>
                         }
                     </div>

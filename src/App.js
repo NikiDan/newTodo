@@ -14,7 +14,7 @@ function App() {
 
     useEffect(()=>{
         localStorage.setItem('items', JSON.stringify(localValue))
-    }, [localValue])
+    },[localValue])
 
   return (
     <div className="App">

@@ -5,7 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { nanoid } from 'nanoid';
 import "./AddListModule.css";
 
-function AddTodo({todo, setTodo, setLocalValue}) {
+function AddTodo({todo, setTodo}) {
 
     const[value, setValue] = useState('')
 
@@ -16,11 +16,7 @@ function AddTodo({todo, setTodo, setLocalValue}) {
                title: value,
                status: true
            }]
-            setLocalValue((localValue) => [...localValue, {
-                id: nanoid(),
-                title: value,
-                status: true
-            }])
+            localStorage.setItem('items', JSON.stringify(newItem))
             setTodo(newItem)
             setValue('')
         }
