@@ -84,9 +84,9 @@ function TodoList({todo, setTodo}) {
     return(
         <div className="todoList">
             <div className="btnGroupContainer">
-                <Button onClick={ ()=>todoFilter('all') }>All</Button>
-                <Button className="btnGroup" onClick={ ()=>todoFilter(true) }>Opened</Button>
-                <Button className="btnGroup" onClick={ ()=>todoFilter(false) }>Closed</Button>
+                <Button className="responBt responBtn responSortBtn" onClick={ ()=>todoFilter('all') }>All</Button>
+                <Button className="btnGroup responBtn responSortBtn" onClick={ ()=>todoFilter(true) }>Opened</Button>
+                <Button className="btnGroup responBtn responSortBtn" onClick={ ()=>todoFilter(false) }>Closed</Button>
             </div>
             {
                 filtered.map(item => (
@@ -104,14 +104,14 @@ function TodoList({todo, setTodo}) {
                         {
                             edit === item.id ?
                                 <div>
-                                    <Button onClick={()=>saveTodo(item.id)}><CheckOutlined/></Button>
+                                    <Button className="saveBtn responBtn" onClick={()=>saveTodo(item.id)}><CheckOutlined/></Button>
                                 </div> :
                                 <div className="btnCore">
-                                    <Button size="large" onClick={()=>statusTodo(item.id)}>{
+                                    <Button size="large" className="responBtn responFuncBtn" onClick={()=>statusTodo(item.id)}>{
                                         item.status ? <CheckCircleOutlined/> : <CloseCircleOutlined />
                                     }</Button>
-                                    <Button size="large" className="btnGroup" onClick={()=>editTodo(item.id, item.title)}><EditOutlined /></Button>
-                                    <Button size="large" className="btnGroup" danger onClick={()=>animationDelete(item.id)}><DeleteOutlined /></Button>
+                                    <Button size="large" className="btnGroup responBtn responFuncBtn" onClick={()=>editTodo(item.id, item.title)}><EditOutlined /></Button>
+                                    <Button size="large" className="btnGroup responBtn responFuncBtn" danger onClick={()=>animationDelete(item.id)}><DeleteOutlined /></Button>
                                 </div>
                         }
                     </div>

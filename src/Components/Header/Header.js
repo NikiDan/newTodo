@@ -4,9 +4,9 @@ import "./HeaderModule.css"
 function Header() {
 
     return (
-        <h2 className="header">
-            Just Todo
-        </h2>
+        <div className="header">
+                <h2 className="headerText">What do you want to do today ?</h2>
+        </div >
     );
 }
 

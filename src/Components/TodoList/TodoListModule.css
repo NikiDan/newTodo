@@ -47,3 +47,36 @@
 .ant-btn{
     transition: none;
 }
+@media (max-width: 400px), screen and (orientation: portrait){
+
+    .responBtn{
+        font-size: 30px;
+        height: 70px;
+    }
+    .responSortBtn{
+        width: 170px;
+    }
+    .responFuncBtn{
+        width: 100px;
+    }
+    .btnGroup{
+        margin-left: 20px;
+    }
+    .btnGroupContainer{
+        margin-top: 10px;
+        padding-bottom: 20px;
+    }
+    .todoContainer{
+        font-size: 35px;
+        border-bottom: 2px solid #000000;
+        padding: 20px 0;
+    }
+    .editInput{
+        padding: 15px;
+        font-size: 35px;
+    }
+    .saveBtn{
+        height: 87px;
+        margin-left: 15px;
+    }
+}

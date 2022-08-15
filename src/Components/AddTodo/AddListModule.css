@@ -8,3 +8,25 @@
 .btnAdd{
     margin-right: 25px;
 }
+@media (max-width: 400px), screen and (orientation: portrait) {
+    .inpTodo {
+        padding: 15px;
+        font-size: 35px;
+    }
+
+    .btnAdd {
+        font-size: 35px;
+        height: 87px;
+        margin-left: 15px;
+    }
+
+    .todoListDisable {
+        padding: 20px 20px;
+        height: 70px;
+        width: 100%;
+    }
+
+    .btnCore {
+        margin-left: 15px
+    }
+}

@@ -1,3 +1,8 @@
 .header{
     margin-bottom: 10px;
 }
+@media (max-width: 400px), screen and (orientation: portrait){
+    .headerText{
+        font-size: 40px;
+    }
+}
