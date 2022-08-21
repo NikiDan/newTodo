@@ -5,6 +5,7 @@
   text-align: center;
   padding-top: 15px;
 }
-.App input, .ant-btn{
+.App input,
+.ant-btn {
   border-radius: 5px !important;
 }

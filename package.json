@@ -43,6 +43,7 @@
   "devDependencies": {
     "@iconify/react": "^3.2.2",
     "babel-plugin-import": "^1.13.5",
+    "prettier": "2.7.1",
     "react-app-rewired": "^2.2.1"
   }
 }
