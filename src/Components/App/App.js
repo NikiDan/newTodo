@@ -4,7 +4,7 @@ import TodoList from "../TodoList";
 import Header from "../Header";
 import AddTodo from "../AddTodo";
 
-function App() {
+let App = () => {
   const [todo, setTodo] = useState(
     JSON.parse(localStorage.getItem("items")) || []
   );

@@ -12,7 +12,7 @@ import { Input } from "antd";
 import "./Style.css";
 import "animate.css";
 
-function TodoList({ todo, setTodo }) {
+let TodoList = ({ todo, setTodo }) => {
   const [edit, setEdit] = useState(null);
   const [value, setValue] = useState("");
   const [filtered, setFiltered] = useState(todo);
@@ -21,13 +21,17 @@ function TodoList({ todo, setTodo }) {
     setFiltered(todo);
   }, [todo]);
 
-  function deleteTodo(id) {
-    let newTodo = [...todo].filter((item) => item.id !== id);
-    setTodo(newTodo);
+  let localStorageUpdate = (newTodo) => {
     localStorage.setItem("items", JSON.stringify(newTodo));
   }
 
-  function animationDelete(id) {
+  let deleteTodo = (id) => {
+    let newTodo = [...todo].filter((item) => item.id !== id);
+    setTodo(newTodo);
+    localStorageUpdate(newTodo);
+  }
+
+  let animationDelete = (id) => {
     const todoContainer = document.getElementById(id);
 
     todoContainer.classList.remove("animate__zoomIn");
@@ -38,30 +42,30 @@ function TodoList({ todo, setTodo }) {
     });
   }
 
-  function statusTodo(id) {
+  let statusTodo = (id) => {
     let newTodo = [...todo].filter((item) => {
       if (item.id === id) {
         item.status = !item.status;
       }
       return item;
     });
-    localStorage.setItem("items", JSON.stringify(newTodo));
+    localStorageUpdate(newTodo);
     setTodo(newTodo);
   }
 
-  function editTodo(id, title) {
+  let editTodo = (id, title) => {
     setEdit(id);
     setValue(title);
   }
 
-  function saveTodo(id) {
+  let saveTodo = (id) => {
     const newTodo = todo.map((item) => {
       if (item.id === id) {
         item.title = value;
       }
       return item;
     });
-    localStorage.setItem("items", JSON.stringify(newTodo));
+    localStorageUpdate(newTodo);
     setTodo(newTodo);
     setEdit(null);
   }
@@ -72,7 +76,7 @@ function TodoList({ todo, setTodo }) {
     }
   };
 
-  function todoFilter(status) {
+  let todoFilter = (status) => {
     if (status === "all") {
       setFiltered(todo);
     } else {

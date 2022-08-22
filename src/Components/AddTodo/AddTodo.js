@@ -5,10 +5,10 @@ import { PlusOutlined } from "@ant-design/icons";
 import { nanoid } from "nanoid";
 import "./Style.css";
 
-function AddTodo({ todo, setTodo }) {
+let AddTodo = ({ todo, setTodo }) => {
   const [value, setValue] = useState("");
 
-  function saveTodo() {
+  let saveTodo = () => {
     if (value.trim() !== "") {
       const newItem = [
         ...todo,
@@ -24,7 +24,7 @@ function AddTodo({ todo, setTodo }) {
     }
   }
 
-  function onKeyPress(e) {
+  let onKeyPress = (e) => {
     if (e.key === "Enter") {
       saveTodo();
     }
