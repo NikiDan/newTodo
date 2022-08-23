@@ -8,7 +8,7 @@ import {
   CheckCircleOutlined,
   CloseCircleOutlined,
 } from "@ant-design/icons";
-import { Input } from "antd";
+import { Input, message } from "antd";
 import "./Style.css";
 import "animate.css";
 
@@ -68,6 +68,7 @@ let TodoList = ({ todo, setTodo }) => {
     localStorageUpdate(newTodo);
     setTodo(newTodo);
     setEdit(null);
+    message.success('Successful !');
   }
 
   let onKeyPress = (e, id) => {
@@ -86,22 +87,22 @@ let TodoList = ({ todo, setTodo }) => {
   }
 
   return (
-    <div className="todoList">
-      <div className="btnGroupContainer">
+    <div className="todo-list">
+      <div className="todo-list__btn-group-container">
         <Button
-          className="responBt responBtn responSortBtn"
+          className="todo-list__responsive-btn todo-list__responsive-sort-btn"
           onClick={() => todoFilter("all")}
         >
           All
         </Button>
         <Button
-          className="btnGroup responBtn responSortBtn"
+          className="todo-list__btn-group todo-list__responsive-btn todo-list__responsive-sort-btn"
           onClick={() => todoFilter(true)}
         >
           Opened
         </Button>
         <Button
-          className="btnGroup responBtn responSortBtn"
+          className="todo-list__btn-group todo-list__responsive-btn todo-list__responsive-sort-btn"
           onClick={() => todoFilter(false)}
         >
           Closed
@@ -110,13 +111,13 @@ let TodoList = ({ todo, setTodo }) => {
       {filtered.map((item) => (
         <div
           id={item.id}
-          className="todoContainer animate__animated animate__zoomIn"
+          className="todo-list__todo-container animate__animated animate__zoomIn"
           key={item.id}
         >
           {edit === item.id ? (
-            <div className="inputContainer">
+            <div className="todo-container__input-container">
               <Input
-                className="editInput"
+                className="todo-container__edit-input"
                 onChange={(e) => setValue(e.target.value)}
                 value={value}
                 onKeyPress={(e) => onKeyPress(e, item.id)}
@@ -127,8 +128,8 @@ let TodoList = ({ todo, setTodo }) => {
               id="todoListContent"
               className={
                 !item.status
-                  ? "todoListDisable animate__animated animate__flipInX"
-                  : "todoListContent animate__animated animate__bounceIn"
+                  ? "todo-container__todo-list-disable animate__animated animate__flipInX"
+                  : "todo-container__todo-list-content animate__animated animate__bounceIn"
               }
             >
               {item.title}
@@ -137,17 +138,17 @@ let TodoList = ({ todo, setTodo }) => {
           {edit === item.id ? (
             <div>
               <Button
-                className="saveBtn responBtn"
+                className="todo-container__save-btn todo-list__responsive-btn"
                 onClick={() => saveTodo(item.id)}
               >
                 <CheckOutlined />
               </Button>
             </div>
           ) : (
-            <div className="btnCore">
+            <div className="todo-container__btn-core">
               <Button
                 size="large"
-                className="responBtn responFuncBtn"
+                className="todo-list__responsive-btn todo-container__responsive-func-btn"
                 onClick={() => statusTodo(item.id)}
               >
                 {item.status ? (
@@ -158,14 +159,14 @@ let TodoList = ({ todo, setTodo }) => {
               </Button>
               <Button
                 size="large"
-                className="btnGroup responBtn responFuncBtn"
+                className="todo-list__btn-group todo-list__responsive-btn todo-container__responsive-func-btn"
                 onClick={() => editTodo(item.id, item.title)}
               >
                 <EditOutlined />
               </Button>
               <Button
                 size="large"
-                className="btnGroup responBtn responFuncBtn"
+                className="todo-list__btn-group todo-list__responsive-btn todo-container__responsive-func-btn"
                 danger
                 onClick={() => animationDelete(item.id)}
               >

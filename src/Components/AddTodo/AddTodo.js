@@ -31,15 +31,15 @@ let AddTodo = ({ todo, setTodo }) => {
   }
 
   return (
-    <div className="addTodo">
+    <div className="add-todo">
       <Input
         placeholder="Enter something"
-        className="inpTodo"
+        className="add-todo__input"
         value={value}
         onKeyPress={onKeyPress}
         onChange={(e) => setValue(e.target.value)}
       />
-      <Button className="btnAdd" onClick={saveTodo}>
+      <Button className="add-todo__button" onClick={saveTodo}>
         <PlusOutlined />
       </Button>
     </div>

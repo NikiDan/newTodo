@@ -1,37 +1,27 @@
-.addTodo {
+.add-todo {
   display: flex;
 }
 
-.inpTodo {
+.add-todo__input {
   margin: 0 10px 0 25px;
 }
-.btnAdd {
+.add-todo__button {
   margin-right: 25px;
 }
-.btnAdd:hover {
+.add-todo__button:hover {
   color: #3c9103;
   border-color: #3c9103;
 }
 @media (max-width: 400px), screen and (orientation: portrait) {
-  .inpTodo {
+  .add-todo__input {
     padding: 15px;
     font-size: 35px;
   }
 
-  .btnAdd {
+  .add-todo__button {
     font-size: 35px;
     height: 87px;
     margin-left: 15px;
     width: 120px;
-  }
-
-  .todoListDisable {
-    padding: 20px 20px;
-    height: 70px;
-    width: 100%;
-  }
-
-  .btnCore {
-    margin-left: 15px;
   }
 }

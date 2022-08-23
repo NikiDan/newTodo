@@ -1,19 +1,19 @@
-.todoList {
+.todo-list {
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.btnGroupContainer {
+.todo-list__btn-group-container {
   border-bottom: 2px solid #000000;
   margin: 0 25px;
   padding-bottom: 10px;
 }
 
-.btnGroup {
+.todo-list__btn-group {
   margin-left: 5px;
 }
 
-.todoContainer {
+.todo-list__todo-container {
   font-size: 14px;
   display: flex;
   justify-content: space-between;
@@ -23,11 +23,11 @@
   border-bottom: 1px solid #000000;
 }
 
-.todoListContent {
+.todo-container__todo-list-content {
   margin-left: 15px;
 }
 
-.todoListDisable {
+.todo-container__todo-list-disable {
   display: flex;
   align-items: center;
   text-decoration: line-through;
@@ -37,16 +37,16 @@
   height: 40px;
   padding-left: 10px;
 }
-.saveBtn:hover {
+.todo-container__save-btn:hover {
   color: #3c9103;
   border-color: #3c9103;
 }
 
-.btnCore {
+.todo-container__btn-core {
   display: flex;
   margin-left: 10px;
 }
-.inputContainer {
+.todo-container__input-container {
   width: 100%;
   margin-right: 5px;
   display: flex;
@@ -57,42 +57,52 @@
   transition: none;
 }
 @media (max-width: 400px), screen and (orientation: portrait) {
-  .responBtn {
+  .todo-list__responsive-btn {
     font-size: 30px;
     height: 70px;
   }
 
-  .responSortBtn {
+  .todo-list__responsive-sort-btn {
     width: 170px;
   }
 
-  .responFuncBtn {
+  .todo-container__responsive-func-btn {
     width: 100px;
   }
 
-  .btnGroup {
+  .todo-list__btn-group {
     margin-left: 20px;
   }
 
-  .btnGroupContainer {
+  .todo-list__btn-group-container {
     margin-top: 10px;
     padding-bottom: 30px;
   }
 
-  .todoContainer {
+  .todo-list__todo-container {
     font-size: 35px;
     border-bottom: 2px solid #000000;
     padding: 20px 0;
   }
 
-  .editInput {
+  .todo-container__edit-input {
     padding: 15px;
     font-size: 35px;
   }
 
-  .saveBtn {
+  .todo-container__save-btn {
     height: 87px;
     margin-left: 15px;
     width: 100px;
+  }
+
+  .todo-container__todo-list-disable {
+    padding: 20px 20px;
+    height: 70px;
+    width: 100%;
+  }
+
+  .todo-container__btn-core {
+    margin-left: 15px;
   }
 }
