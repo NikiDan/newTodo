@@ -88,21 +88,21 @@ let TodoList = ({ todo, setTodo }) => {
 
   return (
     <div className="todo-list">
-      <div className="todo-list__btn-group-container">
+      <div className="todo-list__filter-group">
         <Button
-          className="todo-list__responsive-btn todo-list__responsive-sort-btn"
+          className="todo-list__btn__filter-responsive todo-list__btn__filter-portrait"
           onClick={() => todoFilter("all")}
         >
           All
         </Button>
         <Button
-          className="todo-list__btn-group todo-list__responsive-btn todo-list__responsive-sort-btn"
+          className="todo-list__btn__filter todo-list__btn__filter-responsive todo-list__btn__filter-portrait"
           onClick={() => todoFilter(true)}
         >
           Opened
         </Button>
         <Button
-          className="todo-list__btn-group todo-list__responsive-btn todo-list__responsive-sort-btn"
+          className="todo-list__btn__filter todo-list__btn__filter-responsive todo-list__btn__filter-portrait"
           onClick={() => todoFilter(false)}
         >
           Closed
@@ -111,7 +111,7 @@ let TodoList = ({ todo, setTodo }) => {
       {filtered.map((item) => (
         <div
           id={item.id}
-          className="todo-list__todo-container animate__animated animate__zoomIn"
+          className="todo-list__todo-notes animate__animated animate__zoomIn"
           key={item.id}
         >
           {edit === item.id ? (
@@ -128,8 +128,8 @@ let TodoList = ({ todo, setTodo }) => {
               id="todoListContent"
               className={
                 !item.status
-                  ? "todo-container__todo-list-disable animate__animated animate__flipInX"
-                  : "todo-container__todo-list-content animate__animated animate__bounceIn"
+                  ? "todo-container__todo-notes__disable animate__animated animate__flipInX"
+                  : "todo-container__todo-notes__content animate__animated animate__bounceIn"
               }
             >
               {item.title}
@@ -138,17 +138,17 @@ let TodoList = ({ todo, setTodo }) => {
           {edit === item.id ? (
             <div>
               <Button
-                className="todo-container__save-btn todo-list__responsive-btn"
+                className="todo-container__save-btn todo-list__btn__filter-responsive"
                 onClick={() => saveTodo(item.id)}
               >
                 <CheckOutlined />
               </Button>
             </div>
           ) : (
-            <div className="todo-container__btn-core">
+            <div className="todo-container__btn__save-edit-delete">
               <Button
                 size="large"
-                className="todo-list__responsive-btn todo-container__responsive-func-btn"
+                className="todo-list__btn__filter-responsive todo-container__btn__func-responsive"
                 onClick={() => statusTodo(item.id)}
               >
                 {item.status ? (
@@ -159,14 +159,14 @@ let TodoList = ({ todo, setTodo }) => {
               </Button>
               <Button
                 size="large"
-                className="todo-list__btn-group todo-list__responsive-btn todo-container__responsive-func-btn"
+                className="todo-list__btn__filter todo-list__btn__filter-responsive todo-container__btn__func-responsive"
                 onClick={() => editTodo(item.id, item.title)}
               >
                 <EditOutlined />
               </Button>
               <Button
                 size="large"
-                className="todo-list__btn-group todo-list__responsive-btn todo-container__responsive-func-btn"
+                className="todo-list__btn__filter todo-list__btn__filter-responsive todo-container__btn__func-responsive"
                 danger
                 onClick={() => animationDelete(item.id)}
               >
