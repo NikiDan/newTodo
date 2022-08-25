@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useMemo, useCallback} from "react";
 import "antd/dist/antd.css";
 import { Button } from "antd";
 import {
@@ -12,7 +12,7 @@ import { Input, message } from "antd";
 import "./Style.css";
 import "animate.css";
 
-let TodoList = ({ todo, setTodo }) => {
+const TodoList = ({ todo, setTodo }) => {
   const [edit, setEdit] = useState(null);
   const [value, setValue] = useState("");
   const [filtered, setFiltered] = useState(todo);
@@ -21,17 +21,26 @@ let TodoList = ({ todo, setTodo }) => {
     setFiltered(todo);
   }, [todo]);
 
-  let localStorageUpdate = (newTodo) => {
+  useMemo(() =>{
+    setFiltered(todo);
+    console.log(filtered)
+  }, [todo]);
+
+  useCallback(() =>{
+    todoFilter();
+  },[]);
+
+  const localStorageUpdate = (newTodo) => {
     localStorage.setItem("items", JSON.stringify(newTodo));
   }
 
-  let deleteTodo = (id) => {
-    let newTodo = [...todo].filter((item) => item.id !== id);
+  const deleteTodo = (id) => {
+    let newTodo = todo.filter((item) => item.id !== id);
     setTodo(newTodo);
     localStorageUpdate(newTodo);
   }
 
-  let animationDelete = (id) => {
+  const animationDelete = (id) => {
     const todoContainer = document.getElementById(id);
 
     todoContainer.classList.remove("animate__zoomIn");
@@ -42,8 +51,8 @@ let TodoList = ({ todo, setTodo }) => {
     });
   }
 
-  let statusTodo = (id) => {
-    let newTodo = [...todo].filter((item) => {
+  const statusTodo = (id) => {
+    let newTodo = todo.filter((item) => {
       if (item.id === id) {
         item.status = !item.status;
       }
@@ -53,12 +62,12 @@ let TodoList = ({ todo, setTodo }) => {
     setTodo(newTodo);
   }
 
-  let editTodo = (id, title) => {
+  const editTodo = (id, title) => {
     setEdit(id);
     setValue(title);
   }
 
-  let saveTodo = (id) => {
+  const saveTodo = (id) => {
     const newTodo = todo.map((item) => {
       if (item.id === id) {
         item.title = value;
@@ -71,16 +80,17 @@ let TodoList = ({ todo, setTodo }) => {
     message.success('Successful !');
   }
 
-  let onKeyPress = (e, id) => {
+  const onKeyPress = (e, id) => {
     if (e.key === "Enter") {
       saveTodo(id);
     }
   };
 
-  let todoFilter = (status) => {
+  const todoFilter = (status) => {
     if (status === "all") {
       setFiltered(todo);
     } else {
+
       let newTodo = todo.filter((item) => item.status === status);
       setFiltered(newTodo);
     }
@@ -180,4 +190,4 @@ let TodoList = ({ todo, setTodo }) => {
   );
 }
 
-export default TodoList;
+export default React.memo(TodoList);
