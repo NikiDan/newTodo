@@ -20,16 +20,7 @@ const TodoList = ({ todo, setTodo }) => {
   useEffect(() => {
     setFiltered(todo);
   }, [todo]);
-
-  useMemo(() =>{
-    setFiltered(todo);
-    console.log(filtered)
-  }, [todo]);
-
-  useCallback(() =>{
-    todoFilter();
-  },[]);
-
+  
   const localStorageUpdate = (newTodo) => {
     localStorage.setItem("items", JSON.stringify(newTodo));
   }
@@ -86,15 +77,20 @@ const TodoList = ({ todo, setTodo }) => {
     }
   };
 
-  const todoFilter = (status) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const todoFilter = useCallback((status) => {
     if (status === "all") {
       setFiltered(todo);
     } else {
-
       let newTodo = todo.filter((item) => item.status === status);
       setFiltered(newTodo);
     }
-  }
+  },[todo])
+
+  useMemo(() => {
+    todoFilter(todo)
+     console.log("useMemo")
+      }, [todo, todoFilter]);
 
   return (
     <div className="todo-list">
