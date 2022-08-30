@@ -5,6 +5,7 @@ import Header from "../Header";
 import AddTodo from "../AddTodo";
 
 let App = () => {
+
   const [todo, setTodo] = useState(
     JSON.parse(localStorage.getItem("items")) || []
   );

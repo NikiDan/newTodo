@@ -21,9 +21,12 @@ const TodoList = ({ todo, setTodo }) => {
     setFiltered(todo);
   }, [todo]);
   
-  const localStorageUpdate = (newTodo) => {
+  const localStorageUpdate = useMemo((newTodo) => {
     localStorage.setItem("items", JSON.stringify(newTodo));
-  }
+    console.log(newTodo)
+  },[])
+
+  // useMemo(() => localStorageUpdate(),[])
 
   const deleteTodo = (id) => {
     let newTodo = todo.filter((item) => item.id !== id);
@@ -89,8 +92,7 @@ const TodoList = ({ todo, setTodo }) => {
 
   useMemo(() => {
     todoFilter(todo)
-     console.log("useMemo")
-      }, [todo, todoFilter]);
+  }, [todo, todoFilter]);
 
   return (
     <div className="todo-list">
