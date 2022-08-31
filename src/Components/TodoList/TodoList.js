@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo, useCallback} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import "antd/dist/antd.css";
 import { Button } from "antd";
 import {
@@ -21,12 +21,9 @@ const TodoList = ({ todo, setTodo }) => {
     setFiltered(todo);
   }, [todo]);
   
-  const localStorageUpdate = useMemo((newTodo) => {
+  const localStorageUpdate = (newTodo) => {
     localStorage.setItem("items", JSON.stringify(newTodo));
-    console.log(newTodo)
-  },[])
-
-  // useMemo(() => localStorageUpdate(),[])
+  }
 
   const deleteTodo = (id) => {
     let newTodo = todo.filter((item) => item.id !== id);
@@ -82,6 +79,7 @@ const TodoList = ({ todo, setTodo }) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const todoFilter = useCallback((status) => {
+    console.log("Отработал todoFilter")
     if (status === "all") {
       setFiltered(todo);
     } else {
@@ -89,10 +87,6 @@ const TodoList = ({ todo, setTodo }) => {
       setFiltered(newTodo);
     }
   },[todo])
-
-  useMemo(() => {
-    todoFilter(todo)
-  }, [todo, todoFilter]);
 
   return (
     <div className="todo-list">
