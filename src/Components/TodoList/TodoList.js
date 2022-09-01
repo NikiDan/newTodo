@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
 import { Button } from "antd";
 import {
@@ -12,14 +12,9 @@ import { Input, message } from "antd";
 import "./Style.css";
 import "animate.css";
 
-const TodoList = ({ todo, setTodo }) => {
+const TodoList = ({ todo, setTodo, filtered, setFiltered }) => {
   const [edit, setEdit] = useState(null);
   const [value, setValue] = useState("");
-  const [filtered, setFiltered] = useState(todo);
-
-  useEffect(() => {
-    setFiltered(todo);
-  }, [todo]);
   
   const localStorageUpdate = (newTodo) => {
     localStorage.setItem("items", JSON.stringify(newTodo));
@@ -77,39 +72,8 @@ const TodoList = ({ todo, setTodo }) => {
     }
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const todoFilter = useCallback((status) => {
-    console.log("Отработал todoFilter")
-    if (status === "all") {
-      setFiltered(todo);
-    } else {
-      let newTodo = todo.filter((item) => item.status === status);
-      setFiltered(newTodo);
-    }
-  },[todo])
-
   return (
     <div className="todo-list">
-      <div className="todo-list__filter-group">
-        <Button
-          className="todo-list__btn__filter-responsive todo-list__btn__filter-portrait"
-          onClick={() => todoFilter("all")}
-        >
-          All
-        </Button>
-        <Button
-          className="todo-list__btn__filter todo-list__btn__filter-responsive todo-list__btn__filter-portrait"
-          onClick={() => todoFilter(true)}
-        >
-          Opened
-        </Button>
-        <Button
-          className="todo-list__btn__filter todo-list__btn__filter-responsive todo-list__btn__filter-portrait"
-          onClick={() => todoFilter(false)}
-        >
-          Closed
-        </Button>
-      </div>
       {filtered.map((item) => (
         <div
           id={item.id}

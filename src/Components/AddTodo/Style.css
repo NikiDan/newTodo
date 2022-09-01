@@ -4,24 +4,38 @@
 
 .add-todo__input {
   margin: 0 10px 0 25px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  width: 400px;
+  padding: 4px 10px;
 }
+
+.add-todo__input:focus{
+  border: 1px solid #000000;
+}
+
 .add-todo__button {
   margin-right: 25px;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  padding: 0 10px;
+  cursor: pointer;
 }
+
 .add-todo__button:hover {
   color: #3c9103;
   border-color: #3c9103;
 }
-@media (max-width: 400px), screen and (orientation: portrait) {
-  .add-todo__input {
-    padding: 15px;
-    font-size: 35px;
-  }
+/*@media (max-width: 400px), screen and (orientation: portrait) {*/
+/*  .add-todo__input {*/
+/*    padding: 15px;*/
+/*    font-size: 35px;*/
+/*  }*/
 
-  .add-todo__button {
-    font-size: 35px;
-    height: 87px;
-    margin-left: 15px;
-    width: 120px;
-  }
-}
+/*  .add-todo__button {*/
+/*    font-size: 35px;*/
+/*    height: 87px;*/
+/*    margin-left: 15px;*/
+/*    width: 120px;*/
+/*  }*/
+/*}*/

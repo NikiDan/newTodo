@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Input } from "antd";
-import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { nanoid } from "nanoid";
 import "./Style.css";
@@ -32,16 +30,16 @@ const AddTodo = ({ todo, setTodo }) => {
 
   return (
     <div className="add-todo">
-      <Input
+      <input
         placeholder="Enter something"
         className="add-todo__input"
         value={value}
         onKeyPress={onKeyPress}
         onChange={(e) => setValue(e.target.value)}
       />
-      <Button className="add-todo__button" onClick={saveTodo}>
+      <button className="add-todo__button" onClick={saveTodo}>
         <PlusOutlined />
-      </Button>
+      </button>
     </div>
   );
 }
