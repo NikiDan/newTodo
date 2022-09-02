@@ -50,23 +50,3 @@
 .todo-list__btn__filter {
     margin-left: 10px;
 }
-
-/*@media (max-width: 400px), screen and (orientation: portrait) {*/
-/*    .todo-list__btn__filter-responsive {*/
-/*        font-size: 30px;*/
-/*        height: 70px;*/
-/*    }*/
-
-/*    .todo-list__btn__filter-portrait {*/
-/*        width: 170px;*/
-/*    }*/
-
-/*    .todo-container__btn__func-responsive {*/
-/*        width: 100px;*/
-/*    }*/
-
-/*    .todo-list__btn__filter {*/
-/*        margin-left: 20px;*/
-/*    }*/
-
-/*}*/
