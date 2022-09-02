@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import "./Style.css";
 
-const Filter = ({ todo, setTodo, filtered, setFiltered}) => {
+const Filter = ({ todo, setFiltered}) => {
 
     const todoFilter = useCallback((status) => {
         if (status === "all") {
@@ -10,7 +10,7 @@ const Filter = ({ todo, setTodo, filtered, setFiltered}) => {
             let newTodo = todo.filter((item) => item.status === status);
             setFiltered(newTodo);
         }
-    },[todo])
+    },[todo, setFiltered])
 
     return (
         <div className="todo-list__filter-group">
