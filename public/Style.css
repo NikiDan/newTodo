@@ -4,9 +4,28 @@
     align-items: flex-start;
     background: #FFDEAD;
     height: 100vh;
-    font-size: 18px;
+    font-size: 16px;
+    letter-spacing: 1px;
 }
 button, input {
     border-radius: 4px;
     border: 1px solid #cccccc;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    color: #333333;
+}
+
+input{
+    letter-spacing: 1px;
+}
+
+button{
+     color: #333333d1;;
+}
+
+input:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem rgba(158, 158, 158, 0.25);
 }

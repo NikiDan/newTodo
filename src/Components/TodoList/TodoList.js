@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Button } from "antd";
 import {
   DeleteOutlined,
   CheckOutlined,
@@ -8,11 +7,11 @@ import {
   CheckCircleOutlined,
   CloseCircleOutlined,
 } from "@ant-design/icons";
-import { Input, message } from "antd";
+import { message } from "antd";
 import "./Style.css";
 import "animate.css";
 
-const TodoList = ({ todo, setTodo, filtered, setFiltered }) => {
+const TodoList = ({ todo, setTodo, filtered }) => {
   const [edit, setEdit] = useState(null);
   const [value, setValue] = useState("");
   
@@ -82,7 +81,7 @@ const TodoList = ({ todo, setTodo, filtered, setFiltered }) => {
         >
           {edit === item.id ? (
             <div className="todo-container__input-container">
-              <Input
+              <input
                 className="todo-container__edit-input"
                 onChange={(e) => setValue(e.target.value)}
                 value={value}
@@ -103,18 +102,17 @@ const TodoList = ({ todo, setTodo, filtered, setFiltered }) => {
           )}
           {edit === item.id ? (
             <div>
-              <Button
-                className="todo-container__save-btn todo-list__btn__filter-responsive"
+              <button
+                className="todo-list__btn todo-list__btn__save"
                 onClick={() => saveTodo(item.id)}
               >
                 <CheckOutlined />
-              </Button>
+              </button>
             </div>
           ) : (
             <div className="todo-container__btn__save-edit-delete">
-              <Button
-                size="large"
-                className="todo-list__btn__filter-responsive todo-container__btn__func-responsive"
+              <button
+                className="todo-list__btn todo-container__btn__func-responsive"
                 onClick={() => statusTodo(item.id)}
               >
                 {item.status ? (
@@ -122,22 +120,19 @@ const TodoList = ({ todo, setTodo, filtered, setFiltered }) => {
                 ) : (
                   <CloseCircleOutlined />
                 )}
-              </Button>
-              <Button
-                size="large"
-                className="todo-list__btn__filter todo-list__btn__filter-responsive todo-container__btn__func-responsive"
+              </button>
+              <button
+                className="todo-list__btn todo-list__btn__edit todo-container__btn__func-responsive"
                 onClick={() => editTodo(item.id, item.title)}
               >
                 <EditOutlined />
-              </Button>
-              <Button
-                size="large"
-                className="todo-list__btn__filter todo-list__btn__filter-responsive todo-container__btn__func-responsive"
-                danger
+              </button>
+              <button
+                className="todo-list__btn todo-list__btn__delete todo-container__btn__func-responsive"
                 onClick={() => animationDelete(item.id)}
               >
                 <DeleteOutlined />
-              </Button>
+              </button>
             </div>
           )}
         </div>
