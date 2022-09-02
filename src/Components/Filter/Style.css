@@ -5,19 +5,46 @@
 }
 
 .filter-btn{
-    float: left;
     background-color: #FFFFFF;
-    border: 1px solid #000000;
     padding: 2px 10px;
     font-size: 16px;
     border-radius: 4px;
     font-weight: 400;
     cursor: pointer;
     box-shadow: 0 0 0 #FFFFFF;
+    z-index: 1;
+    outline: none;
+    position: relative;
+}
+
+.filter-btn:hover{
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.filter-btn:before{
+    transition: 0.2s all ease;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    bottom: 50%;
+    opacity: 0;
+    content: "";
+    background-color: #000000;
+}
+
+.filter-btn:hover:before{
+    transition: 0.2s all ease;
+    bottom: 0;
+    top: 0;
+    opacity: 1;
+    z-index: -1;
 }
 
 .filter-btn:active{
     top: 2px;
+    transition: 0.2s all ease;
 }
 
 .todo-list__btn__filter {

@@ -4,21 +4,31 @@
 
 .add-todo__input {
   margin: 0 10px 0 25px;
-  border: 1px solid #000000;
   border-radius: 4px;
   width: 400px;
-  padding: 4px 10px;
+  padding: 7px 14px 9px;
+  letter-spacing: 1px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #333333;
+}
+
+.add-todo__input::placeholder{
+  color: #212529;
+  opacity: 0.4;
 }
 
 .add-todo__input:focus{
-  border: 1px solid #000000;
+  color: #212529;
+  background-color: #fff;
+  border-color: #bdbdbd;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgba(158, 158, 158, 0.25);
 }
 
 .add-todo__button {
   margin-right: 25px;
   background-color: #FFFFFF;
-  border: 1px solid #000000;
-  padding: 0 10px;
+  padding: 0 15px;
   cursor: pointer;
 }
 
