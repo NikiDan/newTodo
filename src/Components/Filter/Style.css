@@ -4,7 +4,7 @@
     padding-bottom: 15px;
 }
 
-.filter-btn{
+.filter-btn {
     background-color: #FFFFFF;
     padding: 2px 10px;
     font-size: 14px;
@@ -17,12 +17,12 @@
     position: relative;
 }
 
-.filter-btn:hover{
+.filter-btn:hover {
     cursor: pointer;
     color: #FFFFFF;
 }
 
-.filter-btn:before{
+.filter-btn:before {
     transition: 0.2s all ease;
     position: absolute;
     left: 0;
@@ -34,7 +34,7 @@
     background-color: #000000;
 }
 
-.filter-btn:hover:before{
+.filter-btn:hover:before {
     transition: 0.2s all ease;
     bottom: 0;
     top: 0;
@@ -42,7 +42,7 @@
     z-index: -1;
 }
 
-.filter-btn:active{
+.filter-btn:active {
     top: 2px;
     transition: 0.2s all ease;
 }
