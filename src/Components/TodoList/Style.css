@@ -1,73 +1,95 @@
 .todo-list {
-  margin-top: 5px;
-  margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 
 .todo-list__todo-notes {
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 25px;
-  border-bottom: 1px solid #000000;
-  height: 45px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 25px;
+    padding: 10px 0;
+    border-bottom: 1px solid #000000;
+    height: auto;
 }
 
-.todo-container__todo-notes__content{
-  padding-left: 10px;
+.todo-container__todo-notes__content {
+    padding-left: 10px;
 }
+
 .todo-container__todo-notes__disable {
-  display: flex;
-  align-items: center;
-  text-decoration: line-through;
-  background: #8fd460;
-  border-radius: 4px;
-  width: 100%;
-  padding-left: 10px;
-  height: 73%;
+    display: flex;
+    align-items: center;
+    text-decoration: line-through;
+    background: #8fd460;
+    border-radius: 4px;
+    width: 100%;
+    padding-left: 10px;
+    height: 73%;
 }
+
 .todo-container__save-btn:hover {
-  color: #3c9103;
-  border-color: #3c9103;
+    color: #3c9103;
+    border-color: #3c9103;
 }
 
 .todo-container__btn__save-edit-delete {
-  display: flex;
-  margin-left: 10px;
-  margin-right: 5px;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 5px;
 }
+
 .todo-container__input-container {
-  width: 100%;
-  margin-right: 5px;
-  display: grid;
-  height: 40px;
-  align-items: center;
+    width: 100%;
+    margin-right: 5px;
+    display: grid;
+    height: 40px;
+    align-items: center;
 }
-.todo-container__edit-input{
-  padding-left: 10px;
-  height: 3.3vh;
+
+.todo-container__edit-input {
+    padding-left: 10px;
+    height: 3.3vh;
 }
-.todo-list__btn{
-  background-color: #FFFFFF;
-  height: 3.3vh;
-  width: 40px;
+
+.todo-list__btn {
+    background-color: #FFFFFF;
+    height: 3.3vh;
+    width: 40px;
 }
-.todo-list__btn:hover{
-  cursor: pointer;
-  color: #1890ff;
-  border-color: #1890ff;
+
+.todo-list__btn:hover {
+    cursor: pointer;
+    color: #1890ff;
+    border-color: #1890ff;
 }
-.todo-list__btn__save:hover{
-  color: #3c9103;
-  border-color: #3c9103;
+
+.todo-list__btn__save:hover {
+    color: #3c9103;
+    border-color: #3c9103;
 }
-.todo-list__btn__delete:hover{
-  color: #da0606;
-  border-color: #da0606;
+
+.todo-list__btn__delete:hover {
+    color: #da0606;
+    border-color: #da0606;
 }
-.todo-list__btn__edit{
-  margin-left: 5px;
+
+.todo-list__btn__edit {
+    margin-left: 5px;
 }
-.todo-list__btn__delete{
-  margin-left: 5px;
+
+.todo-list__btn__delete {
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 290px) {
+    .todo-list__todo-notes {
+        width: 76vw;
+    }
+
+    .todo-list__btn {
+        height: 4.3vh;
+        width: 30px;
+    }
 }
