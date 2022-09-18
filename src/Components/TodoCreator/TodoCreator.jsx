@@ -22,7 +22,7 @@ const TodoCreator = ({ todo, setTodo }) => {
         placeholder="Enter something"
         className="add-todo__input"
         value={value}
-        onKeyPress={onKeyPress}
+        onKeyDown={onKeyPress}
         onChange={(e) => setValue(e.target.value)}
       />
       <button

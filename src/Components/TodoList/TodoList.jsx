@@ -62,7 +62,7 @@ const TodoList = ({ todo, setTodo, filtered }) => {
                 className="todo-container__edit-input"
                 onChange={(e) => setValue(e.target.value)}
                 value={value}
-                onKeyPress={(e) => onKeyPress(e, item.id)}
+                onKeyDown={(e) => onKeyPress(e, item.id)}
               />
             </div>
           ) : (
