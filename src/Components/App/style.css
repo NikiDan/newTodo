@@ -1,0 +1,45 @@
+.App {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    flex-direction: column;
+    text-align: center;
+    background-color: #faf0e6;
+    min-height: 500px;
+    width: 40vw;
+    border-radius: 8px;
+}
+
+.header {
+    margin-bottom: 10px;
+}
+
+.header__title {
+    color: #4c5258;
+    letter-spacing: normal;
+    font-size: 25px;
+}
+
+@media screen and (max-width: 1280px) {
+    .App {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 924px) {
+    .header__title {
+        font-size: 21px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .header__title {
+        font-size: 19px;
+    }
+}
+
+@media screen and (max-width: 310px) {
+    .header__title {
+        font-size: 17px;
+    }
+}

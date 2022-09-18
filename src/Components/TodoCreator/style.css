@@ -1,0 +1,42 @@
+.add-todo {
+    display: flex;
+}
+
+.add-todo__input {
+    margin: 0 10px 0 25px;
+    border-radius: 4px;
+    padding: 0 10px 3px;
+    letter-spacing: 1px;
+    flex-grow: 1;
+}
+
+.add-todo__input::placeholder {
+    color: #212529;
+    opacity: 0.4;
+    font-size: 14px;
+}
+
+.add-todo__button {
+    margin-right: 25px;
+    background-color: #ffffff;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.add-todo__button:hover {
+    color: #3c9103;
+    border-color: #3c9103;
+}
+
+@media screen and (max-width: 341px) {
+    .add-todo__input {
+        width: 58vw;
+    }
+}
+
+@media screen and (max-width: 290px) {
+    .add-todo__input {
+        width: 58vw;
+    }
+}
+
