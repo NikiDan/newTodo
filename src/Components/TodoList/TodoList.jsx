@@ -8,6 +8,7 @@ import {
   CloseCircleOutlined
 } from "@ant-design/icons";
 import "animate.css";
+import { Reorder, AnimatePresence } from "framer-motion"
 
 import { useDeleteAnimation, useSaveTodo } from "./hooks";
 
@@ -48,12 +49,35 @@ const TodoList = ({ todo, setTodo, filtered }) => {
     }
   };
 
+  const variants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+    },
+    exit: {
+      opacity: 0,
+    }
+  }
+
   return (
-    <div className="todo-list">
+    <Reorder.Group
+      as="div"
+      axys="y"
+      values={todo}
+      onReorder={setTodo}
+      className="todo-list">
+      <AnimatePresence>
       {filtered.map((item) => (
-        <div
+        <Reorder.Item
+          value={item}
+          whileDrag={{
+            scale: 1.05
+          }}
+          {...variants}
           id={item.id}
-          className="todo-list__todo-notes animate__animated animate__zoomIn"
+          className="todo-list__todo-notes"
           key={item.id}
         >
           {edit === item.id ? (
@@ -70,8 +94,8 @@ const TodoList = ({ todo, setTodo, filtered }) => {
               id="todoListContent"
               className={
                 !item.status
-                  ? "todo-container__todo-notes__disable animate__animated animate__flipInX"
-                  : "todo-container__todo-notes__content animate__animated animate__bounceIn"
+                  ? "todo-container__todo-notes__disable"
+                  : "todo-container__todo-notes__content"
               }
             >
               {item.title}
@@ -112,9 +136,10 @@ const TodoList = ({ todo, setTodo, filtered }) => {
               </button>
             </div>
           )}
-        </div>
+        </Reorder.Item>
       ))}
-    </div>
+      </AnimatePresence>
+    </Reorder.Group>
   );
 };
 
