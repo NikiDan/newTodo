@@ -9,3 +9,22 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-weight: 500;
 }
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+    width: 10px; /* ширина для вертикального скролла */
+    height: 10px; /* высота для горизонтального скролла */
+    background-color: #FFDEAD;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+    background-color: #faf0e6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    /*background-color: #e8d7d2;*/
+    background-color: #cccccc;
+}
+

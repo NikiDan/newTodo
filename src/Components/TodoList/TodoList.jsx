@@ -5,10 +5,10 @@ import {
   CheckOutlined,
   EditOutlined,
   CheckCircleOutlined,
-  CloseCircleOutlined
+  CloseCircleOutlined,
 } from "@ant-design/icons";
 import "animate.css";
-import { Reorder, AnimatePresence } from "framer-motion"
+import { Reorder, AnimatePresence, motion } from "framer-motion";
 
 import { useDeleteAnimation, useSaveTodo } from "./hooks";
 
@@ -16,7 +16,7 @@ import { localStorageUpdate } from "./utils";
 
 import "./style.css";
 
-const TodoList = ({ todo, setTodo, filtered }) => {
+const TodoList = ({ todo, setTodo, filtered }, ref) => {
   const [edit, setEdit] = useState(null);
   const [value, setValue] = useState("");
 
@@ -49,7 +49,7 @@ const TodoList = ({ todo, setTodo, filtered }) => {
     }
   };
 
-  const variants = {
+  const addDeleteAnimations = {
     initial: {
       opacity: 0,
     },
@@ -58,86 +58,114 @@ const TodoList = ({ todo, setTodo, filtered }) => {
     },
     exit: {
       opacity: 0,
-    }
-  }
+    },
+  };
+
+  const scrollAnimation = {
+    hidden: {
+      y: -100,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.1,
+      },
+    },
+  };
 
   return (
     <Reorder.Group
+      ref={ref}
       as="div"
       axys="y"
       values={todo}
       onReorder={setTodo}
-      className="todo-list">
+      className="todo-list"
+    >
       <AnimatePresence>
-      {filtered.map((item) => (
-        <Reorder.Item
-          value={item}
-          whileDrag={{
-            scale: 1.05
-          }}
-          {...variants}
-          id={item.id}
-          className="todo-list__todo-notes"
-          key={item.id}
-        >
-          {edit === item.id ? (
-            <div className="todo-container__input-container">
-              <input
-                className="todo-container__edit-input"
-                onChange={(e) => setValue(e.target.value)}
-                value={value}
-                onKeyDown={(e) => onKeyPress(e, item.id)}
-              />
-            </div>
-          ) : (
-            <div
-              id="todoListContent"
-              className={
-                !item.status
-                  ? "todo-container__todo-notes__disable"
-                  : "todo-container__todo-notes__content"
-              }
+        {filtered.map((item) => (
+          <Reorder.Item
+            as="div"
+            value={item}
+            whileDrag={{
+              scale: 1.05,
+            }}
+            {...addDeleteAnimations}
+            key={item.id}
+          >
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.1, once: true }}
             >
-              {item.title}
-            </div>
-          )}
-          {edit === item.id ? (
-            <div>
-              <button
-                className="todo-list__btn todo-list__btn__save"
-                onClick={() => saveTodo(item.id)}
+              <motion.div
+                id={item.id}
+                className="todo-list__todo-notes"
+                key={item.id}
+                variants={scrollAnimation}
               >
-                <CheckOutlined />
-              </button>
-            </div>
-          ) : (
-            <div className="todo-container__btn__save-edit-delete">
-              <button
-                className="todo-list__btn todo-container__btn__func-responsive"
-                onClick={() => statusTodo(item.id)}
-              >
-                {item.status ? (
-                  <CheckCircleOutlined />
+                {edit === item.id ? (
+                  <div className="todo-container__input-container">
+                    <input
+                      className="todo-container__edit-input"
+                      onChange={(e) => setValue(e.target.value)}
+                      value={value}
+                      onKeyDown={(e) => onKeyPress(e, item.id)}
+                    />
+                  </div>
                 ) : (
-                  <CloseCircleOutlined />
+                  <div
+                    id="todoListContent"
+                    className={
+                      !item.status
+                        ? "todo-container__todo-notes__disable"
+                        : "todo-container__todo-notes__content"
+                    }
+                  >
+                    {item.title}
+                  </div>
                 )}
-              </button>
-              <button
-                className="todo-list__btn todo-list__btn__edit todo-container__btn__func-responsive"
-                onClick={() => editTodo(item.id, item.title)}
-              >
-                <EditOutlined />
-              </button>
-              <button
-                className="todo-list__btn todo-list__btn__delete todo-container__btn__func-responsive"
-                onClick={() => deleteAnimation(item.id)}
-              >
-                <DeleteOutlined />
-              </button>
-            </div>
-          )}
-        </Reorder.Item>
-      ))}
+                {edit === item.id ? (
+                  <div>
+                    <button
+                      className="todo-list__btn todo-list__btn__save"
+                      onClick={() => saveTodo(item.id)}
+                    >
+                      <CheckOutlined />
+                    </button>
+                  </div>
+                ) : (
+                  <div className="todo-container__btn__save-edit-delete">
+                    <button
+                      className="todo-list__btn todo-container__btn__func-responsive"
+                      onClick={() => statusTodo(item.id)}
+                    >
+                      {item.status ? (
+                        <CheckCircleOutlined />
+                      ) : (
+                        <CloseCircleOutlined />
+                      )}
+                    </button>
+                    <button
+                      className="todo-list__btn todo-list__btn__edit todo-container__btn__func-responsive"
+                      onClick={() => editTodo(item.id, item.title)}
+                    >
+                      <EditOutlined />
+                    </button>
+                    <button
+                      className="todo-list__btn todo-list__btn__delete todo-container__btn__func-responsive"
+                      onClick={() => deleteAnimation(item.id)}
+                    >
+                      <DeleteOutlined />
+                    </button>
+                  </div>
+                )}
+              </motion.div>
+            </motion.div>
+          </Reorder.Item>
+        ))}
       </AnimatePresence>
     </Reorder.Group>
   );
