@@ -35,7 +35,7 @@
     bottom: 50%;
     opacity: 0;
     content: "";
-    background-color: #FFDEAD;
+    background-color: #dbc6ee;
 }
 
 .filter-btn:hover:before {

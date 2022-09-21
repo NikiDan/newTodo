@@ -14,12 +14,12 @@ body {
 ::-webkit-scrollbar {
     width: 10px; /* ширина для вертикального скролла */
     height: 10px; /* высота для горизонтального скролла */
-    background-color: #FFDEAD;
+    background-color: #e3e4fa;
 }
 
 /* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
-    background-color: #faf0e6;
+    background-color: #baa8c7;
     border-radius: 4px;
 }
 
