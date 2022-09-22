@@ -49,30 +49,16 @@ const TodoList = ({ todo, setTodo, filtered }, ref) => {
     }
   };
 
-  const addDeleteAnimations = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 1,
-    },
-    exit: {
-      opacity: 0,
-    },
-  };
-
   const scrollAnimation = {
     hidden: {
-      y: -100,
-      opacity: 0,
+      opacity: 0
     },
     visible: {
-      y: 0,
       opacity: 1,
       transition: {
-        delay: 0.1,
-      },
-    },
+        delay: 0.1
+      }
+    }
   };
 
   return (
@@ -90,21 +76,21 @@ const TodoList = ({ todo, setTodo, filtered }, ref) => {
             as="div"
             value={item}
             whileDrag={{
-              scale: 1.05,
+              scale: 1.05
             }}
-            {...addDeleteAnimations}
             key={item.id}
           >
             <motion.div
+              key={item.id}
+              className="motion-div"
               initial="hidden"
               whileInView="visible"
               viewport={{ amount: 0.1, once: true }}
+              variants={scrollAnimation}
             >
               <motion.div
-                id={item.id}
                 className="todo-list__todo-notes"
                 key={item.id}
-                variants={scrollAnimation}
               >
                 {edit === item.id ? (
                   <div className="todo-container__input-container">
